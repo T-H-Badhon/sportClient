@@ -6,6 +6,7 @@ import SellModal from "./SellModal";
 import { useState } from "react";
 import { useSellProductMutation } from "../redux/api/saleApi/saleApi";
 import { useAppSelector } from "../redux/hook";
+import { invoicePrinter } from "../utilities/invoicePrinter";
 
 type TProps = {
   product: any;
@@ -28,10 +29,15 @@ const ProductCard = ({ product, deleteFunc }: TProps) => {
     const currentQuantity = product.quantity - saleInfo.sellQuantity;
     const data = { ...saleInfo, currentQuantity, productId: product._id };
 
-    await sellProduct(data);
+    const res = await sellProduct(data).unwrap();
 
+    console.log(res);
+
+    const print = confirm("Do you want to print invoice?");
+    if (print) {
+      invoicePrinter(res.data);
+    }
     setOpenModal(false);
-    window.location.reload();
   };
 
   return (
