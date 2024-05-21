@@ -93,6 +93,7 @@ const CreateStuff = () => {
             <Label htmlFor="role" value="Role" />
           </div>
           <Select id="role" className="w-full" {...register("role")}>
+            <option>select role</option>
             <option value="manager">Manager</option>
             <option value="seller">Seller</option>
           </Select>
