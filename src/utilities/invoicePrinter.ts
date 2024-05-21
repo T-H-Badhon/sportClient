@@ -1,6 +1,7 @@
 import jsPDFInvoiceTemplate, { OutputType } from "jspdf-invoice-template";
 
-export const invoicePrinter = (data) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const invoicePrinter = (data: any) => {
   const props = {
     outputType: OutputType.Save,
     returnJsPDFDocObject: true,
@@ -42,7 +43,7 @@ export const invoicePrinter = (data) => {
         { title: "Price" },
         { title: "Total" },
       ],
-      table: Array.from(Array(1), (item, index) => [
+      table: Array.from(Array(1), (_item, index) => [
         index + 1,
         data.name,
         data.sellQuantity,
