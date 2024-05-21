@@ -6,6 +6,8 @@ step 1: first run the server-side application on VS code and in command prompt t
 
 step 2: now go to http://localhost:5000/ to check weather the server side running or not.
 
-step 3: open client side in VS code and type npm run dev in command prompt.
+step 3: open client side in VS code and replace baseApi URL by http://localhost:5000 .
+
+step 5: open terminal and type npm run dev in command prompt.
 
 step 4: go to link shown in terminal to use my application.
