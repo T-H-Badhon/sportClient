@@ -6,12 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../redux/api/authApi/authApi";
 import { varifyToken } from "../../utilities/varifyToken";
 import { setUser } from "../../redux/slices/authSlice";
-import { useAppDispatch } from "../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const role = useAppSelector((state) => state.auth.role);
 
   const [login] = useLoginMutation();
 
@@ -24,7 +25,7 @@ const Login = () => {
       const user = { ...userInfo, token: res.data.token };
       dispatch(setUser(user));
 
-      navigate(`/${user?.role}/dashboard`);
+      navigate(`/${role}/dashboard`);
     } catch (error: any) {
       if (error.data) {
         alert(error.data.errorMessage);
