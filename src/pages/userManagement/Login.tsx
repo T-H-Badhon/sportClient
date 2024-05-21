@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Label, TextInput } from "flowbite-react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useLoginMutation } from "../../redux/api/authApi/authApi";
 import { varifyToken } from "../../utilities/varifyToken";
@@ -61,14 +61,6 @@ const Login = () => {
             required
             {...register("password")}
           />
-        </div>
-        <div>
-          <h1>
-            Don't have account?{" "}
-            <Link to="/register">
-              <span className="text-blue-700">Register Now</span>
-            </Link>
-          </h1>
         </div>
 
         <Button type="submit">Submit</Button>
