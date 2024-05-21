@@ -22,7 +22,6 @@ const Login = () => {
       const userInfo = varifyToken(res.data.token);
 
       const user = { ...userInfo, token: res.data.token };
-
       dispatch(setUser(user));
 
       navigate(`/${user?.role}/dashboard`);

@@ -39,11 +39,15 @@ export const invoicePrinter = (data) => {
         },
 
         { title: "Quantity" },
+        { title: "Price" },
+        { title: "Total" },
       ],
       table: Array.from(Array(1), (item, index) => [
         index + 1,
-        data.productId,
+        data.name,
         data.sellQuantity,
+        data.price,
+        data.sellQuantity * data.price,
       ]),
     },
     footer: {

@@ -31,11 +31,10 @@ const ProductCard = ({ product, deleteFunc }: TProps) => {
 
     const res = await sellProduct(data).unwrap();
 
-    console.log(res);
-
     const print = confirm("Do you want to print invoice?");
     if (print) {
-      invoicePrinter(res.data);
+      const data = { ...res?.data, name: product?.name, price: product?.price };
+      invoicePrinter(data);
     }
     setOpenModal(false);
   };

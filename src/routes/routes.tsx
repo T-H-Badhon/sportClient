@@ -10,6 +10,9 @@ import Login from "../pages/userManagement/Login";
 import UpdateProducts from "../pages/productsManagement/updateProducts";
 import CreateDuplicate from "../pages/productsManagement/createDuplicate";
 import PrivateRoutes from "./PrivateRoutes";
+import CreateStuff from "../pages/userManagement/CreateStuff";
+import MDashboard from "../pages/dashboard/MDashboard";
+import ADashboard from "../pages/dashboard/ADashboard";
 
 const adminRoute = routegenerator(adminRoutes);
 
@@ -18,13 +21,11 @@ const managerRoute = routegenerator(managerRoutes);
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main></Main>,
-    children: [
-      {
-        path: "/login",
-        element: <Login></Login>,
-      },
-    ],
+    element: (
+      <PrivateRoutes role="">
+        <Main></Main>
+      </PrivateRoutes>
+    ),
   },
   {
     path: "/admin",
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       </PrivateRoutes>
     ),
     children: [
+      {
+        path: "dashboard",
+        element: <ADashboard></ADashboard>,
+      },
       {
         path: "updateProduct/:id",
         element: <UpdateProducts></UpdateProducts>,
@@ -54,6 +59,10 @@ const router = createBrowserRouter([
     ),
     children: [
       {
+        path: "dashboard",
+        element: <MDashboard></MDashboard>,
+      },
+      {
         path: "updateProduct/:id",
         element: <UpdateProducts></UpdateProducts>,
       },
@@ -72,6 +81,14 @@ const router = createBrowserRouter([
       </PrivateRoutes>
     ),
     children: routegenerator(sellerRoutes),
+  },
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
+  {
+    path: "/register",
+    element: <CreateStuff></CreateStuff>,
   },
 ]);
 

@@ -10,10 +10,10 @@ type TProps = {
 const PrivateRoutes = ({ children, role }: TProps) => {
   const userRole = useAppSelector((state) => state.auth.role);
 
-  if (userRole != role) {
-    return <Login></Login>;
-  } else {
+  if (userRole && userRole == role) {
     return children;
+  } else {
+    return <Login></Login>;
   }
 };
 

@@ -1,4 +1,4 @@
-import { Label, TextInput } from "flowbite-react";
+import { Label, Select, TextInput } from "flowbite-react";
 
 import { useForm } from "react-hook-form";
 
@@ -140,13 +140,10 @@ const UpdateProducts = () => {
             <div className="mb-2 block">
               <Label htmlFor="condition" value="Condition:" />
             </div>
-            <TextInput
-              id="condition"
-              type="text"
-              sizing="sm"
-              defaultValue={product?.condition}
-              {...register("condition")}
-            />
+            <Select id="condition" {...register("condition")} required>
+              <option>new</option>
+              <option>used</option>
+            </Select>
           </div>
         </div>
         <div className="grid grid-cols-6 gap-3">
